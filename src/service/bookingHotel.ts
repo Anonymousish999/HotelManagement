@@ -1,7 +1,7 @@
-//import readline from "readline";
 import hotels from "./addHotel";
 import { displayHotel } from "./displayHotel";
 import promptSync from "prompt-sync";
+import logger from "../logger/logger";
 const prompt = promptSync();
 
 
@@ -14,8 +14,10 @@ function loop() {
     if (choice === "1") {
       displayHotel();
       bookHotel();
+      logger.info("Hotel booked successfully");
     } else if (choice === "2") {
       console.log("Thank you for visiting");
+      logger.error("User exited");
       return;
     } else {
       console.log("Invalid choice");
