@@ -3,10 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-//import readline from "readline";
 const addHotel_1 = __importDefault(require("./addHotel"));
 const displayHotel_1 = require("./displayHotel");
 const prompt_sync_1 = __importDefault(require("prompt-sync"));
+const logger_1 = __importDefault(require("../logger/logger"));
 const prompt = (0, prompt_sync_1.default)();
 function loop() {
     while (true) {
@@ -17,9 +17,11 @@ function loop() {
         if (choice === "1") {
             (0, displayHotel_1.displayHotel)();
             bookHotel();
+            logger_1.default.info("Hotel booked successfully");
         }
         else if (choice === "2") {
             console.log("Thank you for visiting");
+            logger_1.default.error("User exited");
             return;
         }
         else {
